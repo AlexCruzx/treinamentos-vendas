@@ -6,14 +6,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-image: url('fundo.jpg'); /* caminho da imagem */
-      background-size: cover; /* faz a imagem cobrir toda a tela */
+      background-image: url('imagens/fundo.jpg'); /* caminho da imagem */
+      background-size: cover; /* cobre toda a tela */
       background-position: center; /* centraliza a imagem */
-      background-repeat: no-repeat; /* evita repetição */
+      background-repeat: no-repeat; /* não repete */
       margin: 0;
       padding: 0;
     }
-
 
     header {
       background: #004aad;
@@ -25,7 +24,8 @@
     main {
       max-width: 800px;
       margin: 20px auto;
-      background: white;
+      background: rgba(255, 255, 255, 0.9); /* fundo branco translúcido */
+      backdrop-filter: blur(4px); /* leve desfoque do fundo */
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -112,7 +112,6 @@
   </main>
 
   <script>
-    // Carrega lista salva no navegador
     let videos = JSON.parse(localStorage.getItem('videos')) || [
       { title: "Introdução ao Processo de Vendas", url: "https://www.youtube.com/embed/W6NZfCO5SIk" },
       { title: "Como lidar com objeções", url: "https://www.youtube.com/embed/TlB_eWDSMt4" }
@@ -148,7 +147,6 @@
 
       if (!title || !url) return alert("Preencha todos os campos!");
 
-      // Converte link normal em embed
       if (url.includes("watch?v=")) {
         const id = url.split("watch?v=")[1].split("&")[0];
         url = `https://www.youtube.com/embed/${id}`;
